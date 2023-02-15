@@ -1,0 +1,35 @@
+reminder: DI via XML or annotations
+
+Reservations
+- find host
+- view reservations
+	- host
+	- reservation id
+	- guest name
+	- dates
+	- location
+
+create reservation (location, name, dates, total, reservation id)
+- search for host
+- search by location
+- search for guest (all guests and hosts are premade)
+- confirm reservation
+- success/error message
+
+modify reservation
+- find reservation (id, name, dates, location)
+- dates (only thing that can be modified)
+- new total
+
+cancel reservation
+- find reservation
+- confirm cancellation
+- success/error message
+
+validate
+- string input
+- int input
+- dates (cannot be in the past, start date HAS to be before end date)
+- no duplicate reservations
+- host/guest are in database
+

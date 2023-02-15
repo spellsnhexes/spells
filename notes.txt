@@ -1,0 +1,25 @@
+if we were to use list of guests, if theres 1000 guests, if you wanted to find 663 you'd have to loop 663 times until you find the one guest, and you'd have to do that for every guest since they're all different ids, a list of items is ordered is the order it always stays in unless we manually change or manipulate it
+
+map is not ordered at all, gives access by keys, can give key-id 
+
+
+Serialize is grabbing data from the forage_data / reservations csv files and is putting them into a stream; deserialize it grabbing data from the stream and putting it back into forage_data/reservations and creating a new file.
+
+ FORAGERS - CSV & SERIALIZE
+============================
+id (forage) | forager id | item id | kg
+
+
+ DESERIALIZE
+=============
+id (forage) | date (file name) | kg | forage id | item id
+
+
+ RESERVATIONS - CSV & SERIALIZE
+================================
+id (reservation) | start date, end date | guest id | total
+
+
+ DESERIALIZE
+=============
+id (reservation) | host id (file name) | start date, end date | guest id | total

@@ -1,0 +1,139 @@
+ Main Menu
+===========
+0. View Reservations
+1. Create Reservation
+2. Modify Existing Reservation
+3. Cancel Reservation
+4. Exit
+
+ View Reservation
+==================
+1. Host
+
+
+ View Reservation
+==================
+Enter host name:
+
+1. Host 1
+2. Host 2
+3. Host 3
+
+Select host: 
+
+Reservations for host, [host name]
+1. R.ID1 | Host | 01-01-2023 - 01-02-2023 | Guest First Name, Guest Last Name
+2. R.ID2 | Host | 02-01-2023 - 02-02-2023 | Guest 2 First Name, Guest 2 Last Name 
+3. R.ID3 | Host | 03-01-2023 - 03-02-2023 | Guest 3 First Name, Guest 3 Last Name 
+	
+Select reservation: 
+
+ Selected Reservation
+======================
+
+Reservation ID: 1 | Host | 01-01-2023 - 01-02-2023 | Guest First Name, Guest Last Name | Cost:
+		
+
+ Create Reservation
+====================
+Search for host [1]
+
+Search for a guest [1]
+First Name:
+Last Name:
+Email:
+
+Start Date:
+End Date:
+Total:			//check and make sure dates don't conflict with other reservations
+Continue? [Y/N]
+
+Success. [Guest First & Last Name] reservation, [confirmation #], has been booked for [dates], [cost]. 
+
+
+
+ Modify Reservation
+====================
+Let's find your reservation. 
+
+	 View Reservation
+	==================
+	 1. Find by host	
+
+ Modify Reservation
+====================
+[Selected Reservation]
+
+
+First Name:
+Last Name:
+Email:
+Start Date:
+End Date:
+Total: [redo total, if date changes we need to add or subtract from the inital value]
+Continue [Y/N]?
+
+Success. [Guest Name], you reservation, [R.ID] has been updated. 
+
+State Date:
+End Date:
+New Total:
+
+ Cancel Reservation
+====================
+Let's find your reservation. 
+
+	 View Reservation
+	==================
+	 1. Host
+	 [reservations]	
+
+	 Select reservation: 
+
+Reservation [R.ID] cancelled.
+
+ EXIT
+======
+
+Goodbye.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+reservationfilerepository
+ public List<Reservation> findAll(LocalDate startDate, LocalDate endDate) throws DataException{
+        ArrayList<Reservation> result = new ArrayList<>();
+        try (BufferedReader reader = new BufferedReader(new FileReader(directory))){
+            reader.readLine();
+            for (String line = reader.readLine(); line != null; line = reader.readLine()){
+                String[] fields = line.split(",");
+                if (fields.length == 6){
+                   result.add(deserialize(fields, startDate, endDate));
+                }
+            }
+        }  catch (FileNotFoundException ex){
+        } catch (IOException ex) {
+            throw new DataException(ex.getMessage(), ex);
+        }
+        return result;
+    }
+
